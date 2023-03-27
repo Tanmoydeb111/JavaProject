@@ -1,12 +1,62 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class Calculator {
+
+
+    public class his {
+        public static ArrayList<String> history = new ArrayList<>();
+      }
+
+    
+
+    public static void addition(double a,double b)
+    {
+
+        double sum = a + b;
+        System.out.println("\nSum = " + sum);
+        his.history.add(a + " + " + b + " = " + sum);
+        
+    }
+
+    public static void sub(double a,double b)
+    {
+        double diff = a - b;
+        System.out.println("\nDifference = " + diff);
+        his.history.add(a + " - " + b + " = " + diff);
+    }
+
+
+    public static void div(double a,double b)
+    {
+        double quotient = a / b;
+        System.out.println("\nQuotient = " + quotient);
+        his.history.add(a + " / " + b + " = " + quotient);
+    }
+
+    public static void mul(double a,double b)
+    {
+        double product = a * b;
+        System.out.println("\nProduct = " + product);
+        his.history.add(a + " * " + b + " = " + product);
+    }
+
+
+    public static void mod(double a,double b)
+    {
+        double product = a % b;
+        System.out.println("\nModulas = " + product);
+        his.history.add(a + " % " + b + " = " + product);
+    }
+
+
+
+
 
     public static void main(String[] args) {
         
         Scanner scanner = new Scanner(System.in);
-        ArrayList<String> history = new ArrayList<>();
         
         while(true) {
             
@@ -16,12 +66,12 @@ public class Calculator {
             System.out.println("2. Subtract");
             System.out.println("3. Multiply");
             System.out.println("4. Divide");
-            System.out.println("5. Show history");
-            System.out.println("6. Exit");
+            System.out.println("5. Modulas");
+            System.out.println("6. Show history");
+            System.out.println("7. Exit");
             System.out.print("\nEnter your choice: ");
             int choice = scanner.nextInt();
             
-            // Perform selected operation
             switch(choice) {
             
                 case 1:
@@ -29,19 +79,16 @@ public class Calculator {
                     double num1 = scanner.nextDouble();
                     System.out.print("Enter second number: ");
                     double num2 = scanner.nextDouble();
-                    double sum = num1 + num2;
-                    System.out.println("\nSum = " + sum);
-                    history.add(num1 + " + " + num2 + " = " + sum);
+                    addition(num1, num2);
                     break;
+                    
                 
                 case 2:
                     System.out.print("\nEnter first number: ");
                     double num3 = scanner.nextDouble();
                     System.out.print("Enter second number: ");
                     double num4 = scanner.nextDouble();
-                    double diff = num3 - num4;
-                    System.out.println("\nDifference = " + diff);
-                    history.add(num3 + " - " + num4 + " = " + diff);
+                    sub(num3,num4);
                     break;
                 
                 case 3:
@@ -49,9 +96,7 @@ public class Calculator {
                     double num5 = scanner.nextDouble();
                     System.out.print("Enter second number: ");
                     double num6 = scanner.nextDouble();
-                    double product = num5 * num6;
-                    System.out.println("\nProduct = " + product);
-                    history.add(num5 + " * " + num6 + " = " + product);
+                    mul(num5,num6);
                     break;
                 
                 case 4:
@@ -63,26 +108,37 @@ public class Calculator {
                         System.out.println("\nError: Division by zero");
                         break;
                     }
-                    double quotient = num7 / num8;
-                    System.out.println("\nQuotient = " + quotient);
-                    history.add(num7 + " / " + num8 + " = " + quotient);
+                    div(num7,num8);
                     break;
-                
+
                 case 5:
-                    if(history.isEmpty()) {
+                System.out.print("\nEnter first number: ");
+                double num9 = scanner.nextDouble();
+                System.out.print("Enter second number: ");
+                double num10 = scanner.nextDouble();
+                if(num10 == 0) {
+                    System.out.println("\nError: Division by zero");
+                    break;
+                }
+                mod(num9,num10);
+                break;
+                
+                case 6:
+                    if(his.history.isEmpty()) {
                         System.out.println("\nNo history available");
                         break;
                     }
                     System.out.println("\nHistory:");
-                    for(String entry : history) {
+                    for(String entry : his.history) {
                         System.out.println(entry);
                     }
                     break;
                 
-                case 6:
+                case 7:
                     System.exit(0);
                     break;
-                
+
+                    
                 default:
                     System.out.println("\nInvalid choice");
             
@@ -90,3 +146,5 @@ public class Calculator {
         }
     }
 }
+
+
