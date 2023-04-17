@@ -5,6 +5,60 @@ import java.util.Scanner;
 public class Calculator {
     private static ArrayList<String> history = new ArrayList<>();
 
+
+    public static double add(double a, double b) {
+        return a + b;
+
+
+    }
+
+    public static double subtract(double a, double b) {
+        return a - b;
+
+
+
+    }
+
+    public static double multiply(double a, double b) {
+        return a * b;
+
+
+    }
+
+    public static double divide(double a, double b) {
+        if (b == 0) {
+            throw new ArithmeticException();
+        }
+        return a / b;
+
+
+
+
+
+    }
+
+    public static double modulus(double a, double b) {
+        if (b == 0) {
+            throw new ArithmeticException();
+        }
+        return a % b;
+
+
+
+
+    }
+
+    public static double squareRoot(double a) {
+        if (a < 0) {
+            throw new IllegalArgumentException("Error: Cannot take square root of negative number.");
+        }
+        return Math.sqrt(a);
+
+
+
+
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -35,19 +89,24 @@ public class Calculator {
                 }
                 continue;
             }
-            double num1, num2 = 0;
+
+            double num1=0;
+            double num2 = 0;
+            if(choice<=7)
+            {
             try {
-                System.out.print("Enter first number: ");
+                System.out.print("\nEnter first number: ");
                 num1 = scanner.nextDouble();
                 if (choice != 6) {
                     System.out.print("Enter second number: ");
                     num2 = scanner.nextDouble();
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Error: Invalid input.");
+                System.out.println("Error: Enter Number only.");
                 scanner.nextLine();
                 continue;
             }
+        }
             double result = 0;
             switch (choice) {
                 case 1:
@@ -98,36 +157,5 @@ public class Calculator {
         scanner.close();
     }
 
-    public static double add(double a, double b) {
-        return a + b;
-    }
-
-    public static double subtract(double a, double b) {
-        return a - b;
-    }
-
-    public static double multiply(double a, double b) {
-        return a * b;
-    }
-
-    public static double divide(double a, double b) {
-        if (b == 0) {
-            throw new ArithmeticException();
-        }
-        return a / b;
-    }
-
-    public static double modulus(double a, double b) {
-        if (b == 0) {
-            throw new ArithmeticException();
-        }
-        return a % b;
-    }
-
-    public static double squareRoot(double a) {
-        if (a < 0) {
-            throw new IllegalArgumentException("Error: Cannot take square root of negative number.");
-        }
-        return Math.sqrt(a);
-    }
+   
 }
